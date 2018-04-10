@@ -3,12 +3,21 @@ import java.util.ArrayList;
 public class Radix{
 	
 	private static final short BUCKETS = 10;
+	
 	private static ArrayList< ArrayList<Integer> > bucket;
+	private static int iterations = 10;
 	
 	private static void resetBucket(){
+		
+		for(ArrayList list : bucket){
+			list.clear();
+		}
+		
+		/*
 		for(short i = 0; i<BUCKETS; i++){
 			bucket.get(i).clear();
 		}
+		*/
 	}
 	
 	private static void setBucket(){
@@ -19,15 +28,14 @@ public class Radix{
 	
 	public static void LSD(int[] n){
 		
+		int iterations = getRequiredIterations(n);
 		
 		bucket = new ArrayList<>();
 		setBucket();
 		
 		int pos = 0;
 		int mult = 1;
-		boolean finished;
 		do{
-			finished = true;
 			resetBucket();
 			//Inserting the values in the bucket
 			for(int i=0; i<n.length; i++){
@@ -49,21 +57,20 @@ public class Radix{
 			}
 			
 			mult *= 10;
-		}while(!isSorted(n,mult));
+		}while(mult<iterations);
 		
 	}
 	
-	private static boolean isSorted(int[] n, int mult){
-		
+	private static int getRequiredIterations(int[] n){
+		int iterations = 10;
 		for(int i = 0; i<n.length; i++){
 			
-			if(n[i]>mult){
-				return false;
+			if(n[i]>iterations){
+				iterations = n[i];
 			}
 			
 		}
-		
-		return true;
+		return iterations;
 	}
 	
 }

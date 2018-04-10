@@ -25,9 +25,7 @@ public class Radix{
 		
 		int pos = 0;
 		int mult = 1;
-		boolean finished;
 		do{
-			finished = true;
 			resetBucket();
 			//Inserting the values in the bucket
 			for(int i=0; i<n.length; i++){

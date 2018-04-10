@@ -4,43 +4,41 @@ public class Radix{
 	
 	private static final short BUCKETS = 10;
 	
-	private static ArrayList< ArrayList<Integer> > bucket;
+	private static ArrayList< int[] > bucket;
 	private static int iterations = 10;
 	
 	private static void resetBucket(){
 		
-		for(ArrayList list : bucket){
-			list.clear();
-		}
-		
-		/*
 		for(short i = 0; i<BUCKETS; i++){
-			bucket.get(i).clear();
+			bucket.get(i)[0] = 0;
 		}
-		*/
 	}
 	
-	private static void setBucket(){
+	private static void setBucket(int len){
 		for(short i = 0; i<BUCKETS; i++){
-			bucket.add(new ArrayList<Integer>());
+			bucket.add( new int[len+1] );
 		}
 	}
 	
 	public static void LSD(int[] n){
 		
+		if(n.length==0) return;
+		
 		int iterations = getRequiredIterations(n);
 		
 		bucket = new ArrayList<>();
-		setBucket();
+		setBucket(n.length);
 		
 		int pos = 0;
 		int mult = 1;
 		do{
 			resetBucket();
+			
 			//Inserting the values in the bucket
 			for(int i=0; i<n.length; i++){
 				pos = (n[i]%(mult*10))/mult;
-				bucket.get(pos).add(n[i]);
+				int size = ++bucket.get(pos)[0];      //This is only for readability
+				bucket.get(pos)[ size ] = n[i];
 			}
 			
 			//Getting the values back in the array
@@ -48,16 +46,16 @@ public class Radix{
 			int j = 0;
 			while(i<n.length && j<BUCKETS){
 				
-				for(int x = 0; x<bucket.get(j).size(); x++){
+				for(int x = 0; x<bucket.get(j)[0]; x++){
 					
-					n[i] = bucket.get(j).get(x);
+					n[i] = bucket.get(j)[x+1];
 					i++;
 				}
 				j++;
 			}
 			
 			mult *= 10;
-		}while(mult<iterations);
+		}while(mult<=iterations);
 		
 	}
 	

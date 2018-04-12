@@ -13,8 +13,8 @@ that the array is sorted until it has iterated over every digit of the largest n
 In theory, the largest number method should be faster on large arrays where all numbers have about the same number of digits, while checking if the array is sorted should be faster
 on smaller arrays where the largest number have considerable more digits than the other numbers in the array.\*
 
-###  *Speed Test:
-Conducting speed tests using the SpeedTest class, shows that over 100 000 iterations, with an array of size 2 000 containing random values between 0 and 99, checking if the array
+###  \*Speed Test:
+Conducting speed tests using the SpeedTest class, shows that over 100 000 iterations, with an array of size 2 000 containing random values between 0 and 10 000, checking if the array
 is sorted, was *faster* by about 6 000 nano seconds. But with an array size of 10 000 checking if it is sorted was *slower* by about 10 000 nano seconds.
 The average time that each iteration took was-
 

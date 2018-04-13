@@ -32,4 +32,4 @@ The method that sorts arrays with negatives is considerably slower than the one 
 
 SpeedTest.java was also updated, it had a bug where it sorted the array, and then tried to sort that array (which was already sorted) with the other method.
 
-OldRadix.java was also not actually going through the whole array to check if it was sorted.
+OldRadix.java also had to be fixed because it was not actually going through the whole array to check if it was sorted.

@@ -30,6 +30,7 @@ public class OldRadix{
 			//Inserting the values in the buckets
 			for(int i=0; i<n.length; i++){
 				pos = (n[i]%(mult*10))/mult;
+				
 				buckets.get(pos).add(n[i]);
 			}
 			
@@ -47,15 +48,15 @@ public class OldRadix{
 			}
 			
 			mult *= 10;
-		}while(!isSorted(n,mult));
+		}while(!isSorted(n));
 		
 	}
 	
-	private static boolean isSorted(int[] n, int mult){
+	private static boolean isSorted(int[] n){
 		
-		for(int i = 0; i<n.length; i++){
+		for(int i = 1; i<n.length; i++){
 			
-			if(n[i]>mult){
+			if(n[i]<n[i-1]){
 				return false;
 			}
 			

@@ -16,12 +16,12 @@ on smaller arrays where the largest number have considerable more digits than th
 ###  \*Speed Test:
 Conducting speed tests using the SpeedTest class, shows that over 100 000 iterations, with an array of size 2 000 containing random values between 0 and 10 000, checking if the array
 is sorted, was *faster* by about 6 000 nano seconds. But with an array size of 10 000 checking if it is sorted was *slower* by about 10 000 nano seconds.
-The average time that each iteration took was-
+The average time that each iteration took was...
 
-For array size of 2000:
+...for array size of 2 000:
 - *isSorted* - 50 567 nano sec
 - *checking largest* - 56 628 nano sec
 
-For array size of 10000:
+...for array size of 10 000:
 - *isSorted* - 519 917 nano sec
 - *checking largest* - 509 929 nano sec
